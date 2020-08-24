@@ -1,21 +1,6 @@
 import functools
 
-
-v = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace']
-s = ['spades', 'clubs', 'hearts', 'diamonds']
 a = []
-
-def myfunc(v,s):
-	'''
-	v = list of vals in poker cards
-	s = list of suits in poker cards game
-	'''
-	for i in range(len(v)):
-		for j in range(len(s)):
-			a.append(v[i]+s[j])
-	return a
-
-res =  myfunc(v,s)
 
 rules = {1:['acehearts','kinghearts','queenhearts','jackhearts','10hearts'],
 		2:['10clubs','9clubs','8clubs','7clubs','6clubs'],
@@ -31,7 +16,18 @@ rules = {1:['acehearts','kinghearts','queenhearts','jackhearts','10hearts'],
 gameTitle = ['Royal Flush', 'Straight flush', 'four of a kind', 'full house', 'Flush', 
 			 'Straight', 'Three of a kind', 'Two pair', 'One pair', 'High card']
 
-def poker_game(l1, l2):
+def myfunc(v,s):
+	'''
+	v = list of vals in poker cards
+	s = list of suits in poker cards game
+	'''
+	for i in range(len(v)):
+		for j in range(len(s)):
+			a.append(v[i]+s[j])
+	return a
+
+
+def poker_game(l1: 'Player 1', l2: 'Player 2') -> 'Returns Winner':
 	'''
 	finds the winner between 2 player poker game based on
 	given set of winning rules
