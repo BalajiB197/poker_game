@@ -27,7 +27,7 @@ def myfunc(v,s):
 	return a
 
 
-def poker_game(l1: int, l2: int) -> str:
+def poker_game(l1: list, l2: list) -> str:
 	'''
 	finds the winner between 2 player poker game based on
 	given set of winning rules
