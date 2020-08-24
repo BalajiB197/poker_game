@@ -16,6 +16,6 @@ def test_readme_exists():
     assert os.path.isfile("README.md"), "README.md file missing!"
 
 def test_winner():
-    l1 = ['ace','queen','jack','10']
-    l2 = ['10','9','7','6']
-    assert session6.poker_game(l1, l2) != 'Player 1 won the match Royal Flush'
+    l1 = ['acehearts','kinghearts','queenhearts','jackhearts','10hearts']
+    l2 = ['acehearts','acespades','acediamonds','kingspades','kinghearts']
+    assert session6.poker_game(l1, l2) == 'Player 1 won the match Royal Flush'

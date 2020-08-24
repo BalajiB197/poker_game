@@ -72,9 +72,9 @@ def poker_game(l1, l2):
                     
 		print(cmp1, cmp2)
 		if cmp1 < cmp2:
-			return 'Player 1 won the match {0}'.format(gameTitle[cmp1+1])
+			return 'Player 1 won the match {0}'.format(gameTitle[cmp1-1])
 		else:
-			return 'Player 2 won the match {0}'.format(gameTitle[cmp2+1])
+			return 'Player 2 won the match {0}'.format(gameTitle[cmp2-1])
 
 
 
