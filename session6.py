@@ -27,7 +27,7 @@ def myfunc(v,s):
 	return a
 
 
-def poker_game(l1: 'Player 1', l2: 'Player 2') -> 'Returns Winner':
+def poker_game(l1: 'Player1', l2: 'Player2') -> 'Returns Player won the match':
 	'''
 	finds the winner between 2 player poker game based on
 	given set of winning rules
@@ -66,7 +66,6 @@ def poker_game(l1: 'Player 1', l2: 'Player 2') -> 'Returns Winner':
 					elif functools.reduce(lambda x, y : x and y, map(lambda p, q: p == q,sorted(tmp),l2), True):
 						cmp2 = key
                     
-		print(cmp1, cmp2)
 		if cmp1 < cmp2:
 			return 'Player 1 won the match {0}'.format(gameTitle[cmp1-1])
 		else:
