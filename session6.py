@@ -21,11 +21,13 @@ def myfunc(v,s):
 	v = list of vals in poker cards
 	s = list of suits in poker cards game
 	'''
-	for i in range(len(v)):
-		for j in range(len(s)):
-			a.append(v[i]+s[j])
-	return a
-
+	if len(v) == 13 and len(s) == 4:
+		for i in range(len(v)):
+			for j in range(len(s)):
+				a.append(v[i]+s[j])
+		return a
+	else:
+		raise ValueError("There should be 4 suits and 13 values to generate 52 poker cards")
 
 def poker_game(l1: list, l2: list) -> str:
 	'''
@@ -38,7 +40,7 @@ def poker_game(l1: list, l2: list) -> str:
 	l1, l2 = sorted(l1), sorted(l2)
 	cmp1, cmp2 = 0,0
 	if l1 == l2:
-		print('Won Equal points, DRAW MATCH!!')
+		return 'Won Equal points, DRAW MATCH!!'
 	elif len(l1) == len(l2) and len(l1)>=3 and len(l1)<=5:
 		for key,value in rules.items():
 			if len(l1) == 5:
@@ -70,6 +72,8 @@ def poker_game(l1: list, l2: list) -> str:
 			return 'Player 1 won the match {0}'.format(gameTitle[cmp1-1])
 		else:
 			return 'Player 2 won the match {0}'.format(gameTitle[cmp2-1])
+	else:
+		raise ValueError("Length of list l1 and l2 should be >2 and <6")
 
 
 

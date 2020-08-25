@@ -2,7 +2,10 @@ import os
 import session6
 from session6 import *
 import pytest
+from test_utils import *
+import random
 
+README_CONTENT_CHECK_FOR = ['poker_game', 'Royal Flush']
 
 cards = ['2spades','2clubs','2hearts','2diamonds','3spades','3clubs','3hearts',
  '3diamonds', '4spades', '4clubs', '4hearts', '4diamonds', '5spades', '5clubs',
@@ -18,6 +21,23 @@ s = ['spades', 'clubs', 'hearts', 'diamonds']
 
 def test_readme_exists():
     assert os.path.isfile("README.md"), "README.md file missing!"
+
+def test_fourspace_equal():
+    assert fourspace(session6) == True, 'Not all spaces before lines are a multiple of 4!'
+
+def test_function_names():
+    assert function_name_had_cap_letter(session6) == False, "One of your function has a capitalized alphabet!"
+
+def test_readme_proper_description():
+    READMELOOKSGOOD = True
+    f = open("README.md", "r")
+    content = f.read()
+    f.close()
+    for c in README_CONTENT_CHECK_FOR:
+        if c not in content:
+            READMELOOKSGOOD = False
+            pass
+    assert READMELOOKSGOOD == True, "You have not described all the functions/class well in your README.md file"
 
 def test_winner_1():
     l1 = ['acehearts','kinghearts','queenhearts','jackhearts','10hearts']
@@ -122,6 +142,9 @@ def test_winner_20():
 def test_doc_string_2():
     assert help(session6.myfunc) != ''
 
+def test_doc_string_2a():
+    assert session6.myfunc.__doc__ != ''
+
 def test_doc_string_3():
     assert session6.poker_game.__doc__ != ''
 
@@ -130,5 +153,69 @@ def test_annotation_3():
 
 def test_manual_deck_52_cards():
     assert session6.myfunc(v,s) == cards
+
+def test_poker_game_length_1():
+    l2 = ['acehearts','kinghearts','queenhearts','jackhearts','kingspades']
+    l1 = ['acehearts','acespades','acediamonds','kingspades']
+    with pytest.raises(ValueError):
+        session6.poker_game(l1, l2)
+
+def test_poker_game_length_2():
+    l2 = ['acehearts','kinghearts','queenhearts']
+    l1 = ['acehearts','acespades']
+    with pytest.raises(ValueError):
+        session6.poker_game(l1, l2)
+
+def test_poker_game_length_3():
+    l2 = ['acehearts','kinghearts']
+    l1 = ['acehearts','acespades']
+    with pytest.raises(ValueError):
+        session6.poker_game(l1, l2)
+
+def test_poker_game_length_4():
+    l2 = []
+    l1 = ['acehearts','acespades']
+    with pytest.raises(ValueError):
+        session6.poker_game(l1, l2)
+
+def test_poker_game_length_5():
+    l2 = ['acehearts','kinghearts']
+    l1 = ['acehearts','acespades','acediamonds','kingspades']
+    with pytest.raises(ValueError):
+        session6.poker_game(l1, l2)
+
+def test_poker_game_length_6():
+    l2 = ['acehearts','kinghearts','queenhearts','jackhearts','kingspades']
+    l1 = ['acehearts']
+    with pytest.raises(ValueError):
+        session6.poker_game(l1, l2)
+
+def test_52_cards():
+    tmp = []
+    tmp.extend(v)
+    t = random.randint(0,13)
+    del tmp[t] # del random value
+    with pytest.raises(ValueError):
+        session6.myfunc(tmp,s)
+
+def test_52_cards_2():
+    tmp = []
+    tmp.extend(s) 
+    t = random.randint(0,4)
+    del tmp[t] # del random value
+    with pytest.raises(ValueError):
+        session6.myfunc(v,tmp)
+
+def test_same_cards():
+    l2 = ['acehearts','kinghearts','queenhearts','jackhearts']
+    l1 = ['acehearts','kinghearts','queenhearts','jackhearts']
+    assert session6.poker_game(l1, l2) == 'Won Equal points, DRAW MATCH!!'
+
+def test_same_cards_2():
+    l2 = ['queenhearts','jackhearts','queenhearts','jackhearts']
+    l1 = ['queenhearts','jackhearts','queenhearts','jackhearts']
+    assert session6.poker_game(l1, l2) == 'Won Equal points, DRAW MATCH!!'
+
+
 
 
