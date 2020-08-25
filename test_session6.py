@@ -193,7 +193,7 @@ def test_poker_game_length_6():
 def test_52_cards():
     tmp = []
     tmp.extend(v)
-    t = random.randint(0,13)
+    t = random.randint(0,12)
     del tmp[t] # del random value
     with pytest.raises(ValueError):
         session6.myfunc(tmp,s)
@@ -201,7 +201,7 @@ def test_52_cards():
 def test_52_cards_2():
     tmp = []
     tmp.extend(s) 
-    t = random.randint(0,4)
+    t = random.randint(0,3)
     del tmp[t] # del random value
     with pytest.raises(ValueError):
         session6.myfunc(v,tmp)
