@@ -154,6 +154,9 @@ def test_annotation_3():
 def test_manual_deck_52_cards():
     assert session6.myfunc(v,s) == cards
 
+def test_manual_list_comprehension():
+    assert session6.one_line(v,s) == cards
+
 def test_poker_game_length_1():
     l2 = ['acehearts','kinghearts','queenhearts','jackhearts','kingspades']
     l1 = ['acehearts','acespades','acediamonds','kingspades']

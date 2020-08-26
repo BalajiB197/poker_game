@@ -16,6 +16,10 @@ rules = {1:['acehearts','kinghearts','queenhearts','jackhearts','10hearts'],
 gameTitle = ['Royal Flush', 'Straight flush', 'four of a kind', 'full house', 'Flush', 
 			 'Straight', 'Three of a kind', 'Two pair', 'One pair', 'High card']
 
+# One line expression without lambda and zip
+def one_line(v,s):
+	return [x + y for x in v for y in s]
+
 def myfunc(v,s):
 	'''
 	v = list of vals in poker cards
